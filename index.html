@@ -1,11 +1,926 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Mon site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hedi Ben Hafsa | Game Programmer</title>
+  <meta
+    name="description"
+    content="Portfolio de Hedi Ben Hafsa, gameplay programmer passionne par les jeux video, Unity, SFML, Lua et Unreal Engine 5."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  >
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #111936;
+      --panel: rgba(17, 25, 54, 0.78);
+      --panel-strong: rgba(10, 16, 36, 0.92);
+      --line: rgba(169, 190, 255, 0.14);
+      --text: #edf3ff;
+      --muted: #a9b8de;
+      --accent: #ff6b57;
+      --accent-2: #ffd166;
+      --accent-3: #62e6d9;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255, 107, 87, 0.18), transparent 32%),
+        radial-gradient(circle at 85% 15%, rgba(98, 230, 217, 0.15), transparent 24%),
+        linear-gradient(180deg, #09101f 0%, #0c1227 48%, #0a1020 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 95%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .shell {
+      width: min(var(--max-width), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(11, 16, 32, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-inner {
+      width: min(var(--max-width), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-family: "Chakra Petch", sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.95fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.6rem 0.95rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 0.65rem;
+      height: 0.65rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 18px rgba(255, 107, 87, 0.7);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Chakra Petch", sans-serif;
+      line-height: 1;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6.25rem);
+      margin-top: 1rem;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      max-width: 12ch;
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.75;
+      max-width: 66ch;
+      margin: 1.4rem 0 0;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3.2rem;
+      padding: 0 1.25rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--accent), #ff8f3f);
+      color: #120f16;
+      box-shadow: 0 18px 35px rgba(255, 107, 87, 0.22);
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .hero-side {
+      position: relative;
+    }
+
+    .portrait-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(20, 28, 60, 0.96), rgba(10, 15, 33, 0.96));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .portrait-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -25% -35% auto;
+      width: 280px;
+      height: 280px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255, 107, 87, 0.26), transparent 72%);
+    }
+
+    .portrait-frame {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, transparent 0%, rgba(9, 16, 31, 0.08) 100%),
+        linear-gradient(145deg, rgba(255, 209, 102, 0.18), rgba(98, 230, 217, 0.12));
+    }
+
+    .portrait-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .portrait-info {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .portrait-stat {
+      padding: 1rem 1.15rem;
+      background: var(--panel-strong);
+    }
+
+    .portrait-stat strong {
+      display: block;
+      color: var(--accent-2);
+      font-family: "Chakra Petch", sans-serif;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.3rem;
+    }
+
+    .portrait-stat span {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    section {
+      padding: 1.5rem 0 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 58ch;
+      line-height: 1.7;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      text-transform: uppercase;
+    }
+
+    .section-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .about-grid,
+    .skills-grid,
+    .projects-grid,
+    .contact-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .about-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      padding: 1rem;
+    }
+
+    .about-card,
+    .timeline-card,
+    .skill-card,
+    .project-card,
+    .contact-card {
+      background: linear-gradient(180deg, rgba(14, 21, 46, 0.92), rgba(9, 14, 29, 0.92));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 1.35rem;
+    }
+
+    .about-card p,
+    .timeline-card p,
+    .project-card p,
+    .contact-card p {
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .about-card p + p {
+      margin-top: 1rem;
+    }
+
+    .timeline-card {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .status-chip {
+      display: inline-flex;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(98, 230, 217, 0.12);
+      color: var(--accent-3);
+      border: 1px solid rgba(98, 230, 217, 0.18);
+      font-size: 0.92rem;
+      width: fit-content;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .skill-card h3,
+    .project-card h3,
+    .contact-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .skill-list,
+    .project-meta,
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .skill-list li,
+    .contact-list li {
+      color: var(--muted);
+      padding: 0.55rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .skill-list li:first-child,
+    .contact-list li:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(255, 209, 102, 0.12), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(98, 230, 217, 0.1), transparent 35%);
+      pointer-events: none;
+    }
+
+    .project-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .project-year {
+      font-family: "Chakra Petch", sans-serif;
+      color: var(--accent-2);
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .project-role {
+      display: inline-flex;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      font-size: 0.85rem;
+    }
+
+    .project-card p {
+      margin-bottom: 1rem;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-meta li {
+      padding: 0.5rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-3);
+      font-weight: 700;
+    }
+
+    .project-link:hover,
+    .project-link:focus-visible {
+      color: #9ff7ee;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+    }
+
+    .contact-card p + p {
+      margin-top: 0.8rem;
+    }
+
+    .contact-list a {
+      color: var(--text);
+    }
+
+    .contact-list a:hover,
+    .contact-list a:focus-visible {
+      color: var(--accent-3);
+    }
+
+    .footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 3rem;
+      }
+
+      .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero-copy,
+      .section-header p,
+      .about-card p,
+      .timeline-card p,
+      .project-card p,
+      .contact-card p {
+        font-size: 0.98rem;
+      }
+
+      .portrait-info {
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Bienvenue 👋</h1>
-  <p>Mon site est en ligne !</p>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top">Hedi Ben Hafsa</a>
+      <div class="nav-links">
+        <a href="#about">A propos</a>
+        <a href="#skills">Competences</a>
+        <a href="#projects">Projets</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <span class="eyebrow">Game Programmer</span>
+          <h1 class="headline">Hedi Ben Hafsa</h1>
+          <p class="hero-copy">
+            Passionne par l'univers du jeu video, j'aime relever de nouveaux defis techniques
+            et construire des experiences de gameplay lisibles, dynamiques et solides. Je cherche
+            actuellement un stage en 2026 pour une duree de 2 a 6 mois.
+          </p>
+          <div class="hero-cta">
+            <a class="button button-primary" href="mailto:hedibenhafsa@gmail.com">Me contacter</a>
+            <a class="button button-secondary" href="https://www.hbenhafsa.com/" target="_blank" rel="noreferrer">Voir le site actuel</a>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <article class="portrait-card">
+            <div class="portrait-frame">
+              <div
+                style="
+                  width: 100%;
+                  height: 100%;
+                  display: grid;
+                  place-items: center;
+                  padding: 2rem;
+                  background:
+                    radial-gradient(circle at 30% 20%, rgba(255, 209, 102, 0.36), transparent 24%),
+                    radial-gradient(circle at 72% 30%, rgba(98, 230, 217, 0.28), transparent 20%),
+                    linear-gradient(145deg, rgba(255, 107, 87, 0.14), rgba(98, 230, 217, 0.08));
+                "
+              >
+                <div
+                  style="
+                    width: min(100%, 300px);
+                    aspect-ratio: 1;
+                    border-radius: 28px;
+                    border: 1px solid rgba(255, 255, 255, 0.09);
+                    display: grid;
+                    place-items: center;
+                    text-align: center;
+                    padding: 1.5rem;
+                    background: rgba(5, 9, 22, 0.48);
+                    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+                  "
+                >
+                  <div>
+                    <div style="font-family: 'Chakra Petch', sans-serif; font-size: 0.95rem; letter-spacing: 0.14em; text-transform: uppercase; color: #ffd166;">Portfolio</div>
+                    <div style="font-family: 'Chakra Petch', sans-serif; font-size: clamp(2.3rem, 7vw, 4rem); line-height: 0.95; margin-top: 0.7rem;">Gameplay<br>Systems</div>
+                    <div style="margin-top: 0.9rem; color: #a9b8de; line-height: 1.6;">Version statique prete pour GitHub Pages</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portrait-info">
+              <div class="portrait-stat">
+                <strong>Recherche</strong>
+                <span>Stage 2026, 2 a 6 mois</span>
+              </div>
+              <div class="portrait-stat">
+                <strong>Focus</strong>
+                <span>Gameplay, outils, multijoueur</span>
+              </div>
+              <div class="portrait-stat">
+                <strong>Technos</strong>
+                <span>Unity, SFML, Lua, Unreal</span>
+              </div>
+              <div class="portrait-stat">
+                <strong>Base</strong>
+                <span>Programmation jeu video</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">A propos</h2>
+          </div>
+          <p>
+            Cette version GitHub Pages reprend ton contenu Webflow dans une base statique propre,
+            legere et facile a faire evoluer.
+          </p>
+        </div>
+        <div class="section-panel about-grid">
+          <article class="about-card">
+            <p>
+              Curieux, collaboratif et oriente technique, je cherche constamment a apprendre
+              et a travailler sur des projets qui poussent la reflexion au maximum.
+            </p>
+            <p>
+              J'apprecie particulierement les systemes de gameplay, les architectures de jeu,
+              les outils utiles a l'equipe et les problemes de synchronisation reseau.
+            </p>
+            <p>
+              Si mon profil t'interesse, tu peux me contacter a l'adresse
+              <a href="mailto:hedibenhafsa@gmail.com">hedibenhafsa@gmail.com</a>.
+            </p>
+          </article>
+
+          <aside class="timeline-card">
+            <span class="status-chip">Disponible pour un stage en 2026</span>
+            <p>
+              Duree recherchee : entre 2 et 6 mois.
+            </p>
+            <p>
+              Orientation : programmation gameplay, gameplay systems, outils de production
+              et programmation orientee moteur.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Competences</h2>
+          </div>
+          <p>
+            Les categories ci-dessous reprennent les technologies visibles sur ton portfolio actuel.
+          </p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card">
+            <h3>Languages</h3>
+            <ul class="skill-list">
+              <li>C++</li>
+              <li>C#</li>
+              <li>Lua</li>
+              <li>SQL</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <h3>Engines</h3>
+            <ul class="skill-list">
+              <li>Unreal Engine 5</li>
+              <li>Unity 6</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <h3>Frameworks</h3>
+            <ul class="skill-list">
+              <li>SFML</li>
+              <li>Love2D</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <h3>Tools / Others</h3>
+            <ul class="skill-list">
+              <li>SQLite</li>
+              <li>Tortoise SVN</li>
+              <li>Wwise</li>
+              <li>Tiled</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Projets</h2>
+          </div>
+          <p>
+            Premiere migration des projets en cartes lisibles. Les details Webflow riches
+            pourront etre migrés ensuite dans des pages dediees.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <div class="project-year">2025</div>
+                <h3>ExtractionZ</h3>
+              </div>
+              <span class="project-role">Gameplay Programmer</span>
+            </div>
+            <p>
+              FPS multijoueur 3v3 avec extraction d'objectif et horde de mutants.
+              Travail sur les sessions multijoueur, le player controller, les comportements
+              de mutants, les outils de spawn, le HUD et l'integration Wwise.
+            </p>
+            <ul class="project-meta">
+              <li>Equipe : 8</li>
+              <li>Duree : 8 semaines</li>
+              <li>Unity (C# - ECS)</li>
+            </ul>
+            <a class="project-link" href="https://www.hbenhafsa.com/extractionz" target="_blank" rel="noreferrer">Voir la fiche technique</a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <div class="project-year">2025</div>
+                <h3>Muscle Bird</h3>
+              </div>
+              <span class="project-role">Gameplay Programmer</span>
+            </div>
+            <p>
+              Jeu inspire d'Angry Birds, dans un univers absurde peuple d'animaux
+              anthropomorphes sous steroides.
+            </p>
+            <ul class="project-meta">
+              <li>Equipe : 9</li>
+              <li>Duree : 8 jours</li>
+              <li>Unity (C#)</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <div class="project-year">2025</div>
+                <h3>Cat Running</h3>
+              </div>
+              <span class="project-role">Gameplay Programmer - Game Jam</span>
+            </div>
+            <p>
+              Incarnez un chat et chassez les souris ayant envahi le grenier
+              dans un prototype court et rythme.
+            </p>
+            <ul class="project-meta">
+              <li>Equipe : 7</li>
+              <li>Duree : 3 jours</li>
+              <li>Unity (C#)</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <div class="project-year">2024</div>
+                <h3>The Fallen One</h3>
+              </div>
+              <span class="project-role">Gameplay Programmer</span>
+            </div>
+            <p>
+              Boss rush solo dans lequel le joueur affronte deux Cavaliers de
+              l'Apocalypse : la Pandemie et la Famine.
+            </p>
+            <ul class="project-meta">
+              <li>Equipe : 10</li>
+              <li>Duree : 8 semaines</li>
+              <li>SFML (C++)</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <div class="project-year">2023</div>
+                <h3>Quaterback</h3>
+              </div>
+              <span class="project-role">Gameplay Programmer</span>
+            </div>
+            <p>
+              Jeu local 1v1 qui combine echecs et football americain, developpe
+              en parallele d'un apprentissage de SFML.
+            </p>
+            <ul class="project-meta">
+              <li>Equipe : 10</li>
+              <li>Duree : 8 jours</li>
+              <li>SFML (C++)</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <div class="project-year">2023</div>
+                <h3>Vorace</h3>
+              </div>
+              <span class="project-role">Gameplay Programmer</span>
+            </div>
+            <p>
+              Roguelike dans lequel un pirate cherche a recuperer son tresor perdu
+              dans une aventure orientee action.
+            </p>
+            <ul class="project-meta">
+              <li>Equipe : 9</li>
+              <li>Duree : 8 semaines</li>
+              <li>SFML (C)</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <div class="project-year">2022</div>
+                <h3>Grand Theft Moto</h3>
+              </div>
+              <span class="project-role">Gameplay Programmer</span>
+            </div>
+            <p>
+              Retrouvez votre diabolo vole en affrontant des ennemis avec un
+              arsenal d'armes et de bonus.
+            </p>
+            <ul class="project-meta">
+              <li>Equipe : 7</li>
+              <li>Duree : 8 semaines</li>
+              <li>Love2D (Lua)</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Contact</h2>
+          </div>
+          <p>
+            La page est maintenant compatible avec un hebergement GitHub Pages.
+            On pourra ensuite ajouter tes vrais liens definitifs et les medias locaux.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <article class="contact-card">
+            <h3>Disponible pour echanger</h3>
+            <p>
+              Si tu veux, la prochaine etape peut etre de migrer les pages projet une par une,
+              rapatrier les videos et images dans le depot, puis connecter le domaine final.
+            </p>
+            <p>
+              Cette premiere version privilegie un rendu propre, responsive et maintenable.
+            </p>
+          </article>
+
+          <article class="contact-card">
+            <h3>Liens</h3>
+            <ul class="contact-list">
+              <li><a href="mailto:hedibenhafsa@gmail.com">hedibenhafsa@gmail.com</a></li>
+              <li><a href="https://www.hbenhafsa.com/" target="_blank" rel="noreferrer">Ancien site Webflow</a></li>
+              <li>GitHub, LinkedIn et CV a reconnecter avec tes vraies URLs</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <p>Version statique GitHub Pages du portfolio de Hedi Ben Hafsa.</p>
+    </div>
+  </footer>
 </body>
 </html>
