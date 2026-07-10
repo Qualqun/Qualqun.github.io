@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.hbenhafsa.com/sitemap.xml
+Sitemap: https://hbenhafsa.com/sitemap.xml

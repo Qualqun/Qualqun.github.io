@@ -10,7 +10,7 @@ He is currently seeking an internship in 2026 lasting between 3 and 6 months.
 
 Contact: hedibenhafsa@gmail.com
 
-Portfolio: https://www.hbenhafsa.com/
+Portfolio: https://hbenhafsa.com/
 
 GitHub: https://github.com/Qualqun
 
@@ -18,9 +18,9 @@ LinkedIn: https://www.linkedin.com/in/hedi-ben-hafsa-262b16213/
 
 itch.io: https://qualqun.itch.io/
 
-CV EN: https://www.hbenhafsa.com/Asset/external/cdn.prod.website-files.com/68305b58968b72b95622cfd9/cv-hedi-ben-hafsa-en.pdf
+CV EN: https://hbenhafsa.com/Asset/external/cdn.prod.website-files.com/68305b58968b72b95622cfd9/cv-hedi-ben-hafsa-en.pdf
 
-CV FR: https://www.hbenhafsa.com/Asset/external/cdn.prod.website-files.com/68305b58968b72b95622cfd9/cv-hedi-ben-hafsa-fr.pdf
+CV FR: https://hbenhafsa.com/Asset/external/cdn.prod.website-files.com/68305b58968b72b95622cfd9/cv-hedi-ben-hafsa-fr.pdf
 
 ## Core Skills
 
@@ -39,7 +39,7 @@ CV FR: https://www.hbenhafsa.com/Asset/external/cdn.prod.website-files.com/68305
 
 ### ExtractionZ
 
-URL: https://www.hbenhafsa.com/ENG/extractionz.html
+URL: https://hbenhafsa.com/ENG/extractionz.html
 
 Role: Gameplay Programmer
 
@@ -49,7 +49,7 @@ Summary: 3 vs 3 multiplayer extraction FPS with mutant hordes. Work includes pla
 
 ### Muscle Bird
 
-URL: https://www.hbenhafsa.com/ENG/musclebird.html
+URL: https://hbenhafsa.com/ENG/musclebird.html
 
 Role: Gameplay Programmer
 
@@ -59,7 +59,7 @@ Summary: Physics game inspired by Angry Birds. Work includes projectile implemen
 
 ### The Fallen One
 
-URL: https://www.hbenhafsa.com/ENG/thefallenone.html
+URL: https://hbenhafsa.com/ENG/thefallenone.html
 
 Role: Gameplay Programmer
 
@@ -69,7 +69,7 @@ Summary: Solo boss rush project with combat and gameplay systems.
 
 ### Quaterback
 
-URL: https://www.hbenhafsa.com/ENG/quaterback.html
+URL: https://hbenhafsa.com/ENG/quaterback.html
 
 Role: Gameplay Programmer
 
@@ -79,7 +79,7 @@ Summary: Local 1v1 game combining chess and American football.
 
 ### Vorace
 
-URL: https://www.hbenhafsa.com/ENG/vorace.html
+URL: https://hbenhafsa.com/ENG/vorace.html
 
 Role: Gameplay Programmer
 
@@ -87,7 +87,7 @@ Summary: Roguelike pirate game project with gameplay programming and systems wor
 
 ### Grand Theft Moto
 
-URL: https://www.hbenhafsa.com/ENG/grandtheftmoto.html
+URL: https://hbenhafsa.com/ENG/grandtheftmoto.html
 
 Role: Gameplay Programmer
 
@@ -97,7 +97,7 @@ Summary: Action game project with weapons and bonus systems.
 
 ### Sunbreeze
 
-URL: https://www.hbenhafsa.com/ENG/sunbreeze.html
+URL: https://hbenhafsa.com/ENG/sunbreeze.html
 
 Role: Gameplay Programmer, Game Jam
 
@@ -107,7 +107,7 @@ Summary: Game jam project about travelling through summer and winter to reunite 
 
 ### Flow
 
-URL: https://www.hbenhafsa.com/ENG/flow.html
+URL: https://hbenhafsa.com/ENG/flow.html
 
 Role: Gameplay Programmer, Game Jam
 
@@ -117,7 +117,7 @@ Summary: Game jam project about protecting the Fountain of Youth from three temp
 
 ### Cat Running
 
-URL: https://www.hbenhafsa.com/ENG/catrunning.html
+URL: https://hbenhafsa.com/ENG/catrunning.html
 
 Role: Gameplay Programmer, Game Jam
 
