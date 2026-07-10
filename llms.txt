@@ -1,0 +1,126 @@
+# Hedi Ben Hafsa
+
+> Machine-readable summary for LLMs, recruiters, ATS tools and portfolio crawlers.
+
+## Profile
+
+Hedi Ben Hafsa is a gameplay programmer focused on Unity, Unreal Engine, C#, C++, ECS, multiplayer gameplay, gameplay tools and technical game systems.
+
+He is currently seeking an internship in 2026 lasting between 3 and 6 months.
+
+Contact: hedibenhafsa@gmail.com
+
+Portfolio: https://www.hbenhafsa.com/
+
+GitHub: https://github.com/Qualqun
+
+LinkedIn: https://www.linkedin.com/in/hedi-ben-hafsa-262b16213/
+
+itch.io: https://qualqun.itch.io/
+
+CV EN: https://www.hbenhafsa.com/Asset/external/cdn.prod.website-files.com/68305b58968b72b95622cfd9/cv-hedi-ben-hafsa-en.pdf
+
+CV FR: https://www.hbenhafsa.com/Asset/external/cdn.prod.website-files.com/68305b58968b72b95622cfd9/cv-hedi-ben-hafsa-fr.pdf
+
+## Core Skills
+
+- Gameplay programming
+- Unity, Unity ECS, Netcode for Entities
+- Unreal Engine 5
+- C#, C++, Lua, SQL
+- Multiplayer synchronization and shared authority systems
+- Player controllers, combat systems, objective logic and HUD systems
+- Gameplay tools for designers and artists
+- Wwise audio integration
+- SFML, Love2D, SQLite
+- Git, Perforce, Tortoise SVN
+
+## Main Projects
+
+### ExtractionZ
+
+URL: https://www.hbenhafsa.com/ENG/extractionz.html
+
+Role: Gameplay Programmer
+
+Technology: Unity, C#, ECS, Netcode for Entities, Wwise
+
+Summary: 3 vs 3 multiplayer extraction FPS with mutant hordes. Work includes player controller, player synchronization, shared authority mutant behavior, shooting and health logic, objective and victory conditions, HUD, audio synchronization and gameplay tools.
+
+### Muscle Bird
+
+URL: https://www.hbenhafsa.com/ENG/musclebird.html
+
+Role: Gameplay Programmer
+
+Technology: Unity, C#
+
+Summary: Physics game inspired by Angry Birds. Work includes projectile implementation, audio and tutorial features.
+
+### The Fallen One
+
+URL: https://www.hbenhafsa.com/ENG/thefallenone.html
+
+Role: Gameplay Programmer
+
+Technology: SFML, C++
+
+Summary: Solo boss rush project with combat and gameplay systems.
+
+### Quaterback
+
+URL: https://www.hbenhafsa.com/ENG/quaterback.html
+
+Role: Gameplay Programmer
+
+Technology: SFML, C++
+
+Summary: Local 1v1 game combining chess and American football.
+
+### Vorace
+
+URL: https://www.hbenhafsa.com/ENG/vorace.html
+
+Role: Gameplay Programmer
+
+Summary: Roguelike pirate game project with gameplay programming and systems work.
+
+### Grand Theft Moto
+
+URL: https://www.hbenhafsa.com/ENG/grandtheftmoto.html
+
+Role: Gameplay Programmer
+
+Technology: Love2D, Lua
+
+Summary: Action game project with weapons and bonus systems.
+
+### Sunbreeze
+
+URL: https://www.hbenhafsa.com/ENG/sunbreeze.html
+
+Role: Gameplay Programmer, Game Jam
+
+Technology: Unreal Engine 5, C++
+
+Summary: Game jam project about travelling through summer and winter to reunite the seasons.
+
+### Flow
+
+URL: https://www.hbenhafsa.com/ENG/flow.html
+
+Role: Gameplay Programmer, Game Jam
+
+Technology: Unity, C#
+
+Summary: Game jam project about protecting the Fountain of Youth from three temporalities.
+
+### Cat Running
+
+URL: https://www.hbenhafsa.com/ENG/catrunning.html
+
+Role: Gameplay Programmer, Game Jam
+
+Technology: Unity, C#
+
+Summary: Game jam project where the player controls a cat hunting mice in an attic.
