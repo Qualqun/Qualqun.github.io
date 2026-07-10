@@ -1,6 +1,4 @@
 (function () {
-  const isFrenchPage = document.documentElement.lang.toLowerCase().startsWith("fr");
-
   const filters = [
     { id: "unity", label: "Unity", match: /\bunity\b/i },
     { id: "unreal", label: "Unreal", match: /unreal/i },
@@ -63,8 +61,8 @@
 
   const activeFilters = new Set(filters.map((filter) => filter.id));
   const typeFilters = [
-    { id: "school", label: isFrenchPage ? "Projet scolaire" : "School project" },
-    { id: "personal", label: isFrenchPage ? "Projet personnel" : "Personal project" },
+    { id: "school", label: "Projet scolaire" },
+    { id: "personal", label: "Projet personnel" },
   ];
   const activeTypeFilters = new Set(typeFilters.map((filter) => filter.id));
 
@@ -112,7 +110,7 @@
 
   const filterBar = document.createElement("div");
   filterBar.className = "project-filter-bar";
-  filterBar.setAttribute("aria-label", isFrenchPage ? "Filtres des projets" : "Project filters");
+  filterBar.setAttribute("aria-label", "Project framework filters");
 
   const updateCards = () => {
     cards.forEach((card) => {
