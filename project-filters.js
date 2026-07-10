@@ -114,6 +114,12 @@
   filterBar.className = "project-filter-bar";
   filterBar.setAttribute("aria-label", isFrenchPage ? "Filtres des projets" : "Project filters");
 
+  const filterIcon = document.createElement("span");
+  filterIcon.className = "project-filter-icon";
+  filterIcon.setAttribute("aria-hidden", "true");
+  filterIcon.innerHTML = '<svg viewBox="0 0 24 24" role="img"><path d="M3 5h18l-7 8v5l-4 2v-7L3 5z"/></svg>';
+  filterBar.appendChild(filterIcon);
+
   const updateCards = () => {
     cards.forEach((card) => {
       const cardFilters = (card.dataset.frameworks || "").split(" ").filter(Boolean);

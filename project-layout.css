@@ -17,10 +17,27 @@
 .project-filter-bar {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   gap: 12px;
   width: 100%;
   margin: 0 auto 28px;
+}
+
+.project-filter-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  color: #e94e50;
+  filter: drop-shadow(0 0 10px rgba(233, 78, 80, 0.35));
+}
+
+.project-filter-icon svg {
+  width: 58px;
+  height: 58px;
+  fill: currentColor;
 }
 
 .project-filter-chip {
