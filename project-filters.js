@@ -17,6 +17,7 @@
     grandtheftmoto: { label: "Grand Theft Moto", date: "2022-01", display: "2022" },
     sunbreeze: { label: "Sunbreeze", date: "2025-11", display: "2025" },
     flow: { label: "Flow", date: "2025-11", display: "2025" },
+    samplenav3d: { label: "SampleNav3D", date: "2026-08", display: isFrenchPage ? "En cours" : "In progress" },
     catrunning: { label: "Cat Running", date: "2025-04", display: "2025" },
   };
 
@@ -29,6 +30,7 @@
     grandtheftmoto: ["love2d"],
     sunbreeze: ["unreal"],
     flow: ["unity"],
+    samplenav3d: ["unity"],
     catrunning: ["unity"],
   };
 
@@ -41,10 +43,15 @@
     grandtheftmoto: "school",
     sunbreeze: "personal",
     flow: "personal",
+    samplenav3d: "personal",
     catrunning: "personal",
   };
 
   const getProjectSlug = (card) => {
+    if (card.dataset.project) {
+      return card.dataset.project.toLowerCase();
+    }
+
     const href = card.getAttribute("href") || "";
     const match = href.match(/\/([^/]+)\.html(?:$|[?#])/);
     return match ? match[1].toLowerCase() : "";
