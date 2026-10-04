@@ -6,9 +6,11 @@
     { id: "unreal", label: "Unreal", match: /unreal/i },
     { id: "sfml", label: "SFML", match: /sfml/i },
     { id: "love2d", label: "Love2D", match: /love\s*2d|love2d/i },
+    { id: "sbox", label: "S&Box", match: /s\s*&\s*box/i },
   ];
 
   const projectDates = {
+    devilpact: { label: "Devil Pact", date: "2026", display: "2026" },
     extractionz: { label: "ExtractionZ", date: "2025-05", display: "2025" },
     musclebird: { label: "Muscle Bird", date: "2024-09", display: "2024" },
     thefallenone: { label: "The Fallen One", date: "2024-05", display: "2024" },
@@ -17,11 +19,12 @@
     grandtheftmoto: { label: "Grand Theft Moto", date: "2022-01", display: "2022" },
     sunbreeze: { label: "Sunbreeze", date: "2025-11", display: "2025" },
     flow: { label: "Flow", date: "2025-11", display: "2025" },
-    samplenav3d: { label: "SampleNav3D", date: "2026-08", display: isFrenchPage ? "En cours" : "In progress" },
+    samplenav3d: { label: "SampleNav3D", date: "2026-08", display: "2026" },
     catrunning: { label: "Cat Running", date: "2025-04", display: "2025" },
   };
 
   const projectFrameworks = {
+    devilpact: ["sbox"],
     extractionz: ["unity"],
     musclebird: ["unity"],
     thefallenone: ["sfml"],
@@ -35,16 +38,17 @@
   };
 
   const projectTypes = {
+    devilpact: "gamejam",
     extractionz: "school",
     musclebird: "school",
     thefallenone: "school",
     quaterback: "school",
     vorace: "school",
     grandtheftmoto: "school",
-    sunbreeze: "personal",
-    flow: "personal",
+    sunbreeze: "gamejam",
+    flow: "gamejam",
     samplenav3d: "personal",
-    catrunning: "personal",
+    catrunning: "gamejam",
   };
 
   const getProjectSlug = (card) => {
@@ -72,6 +76,7 @@
   const typeFilters = [
     { id: "school", label: isFrenchPage ? "Projet scolaire" : "School project" },
     { id: "personal", label: isFrenchPage ? "Projet personnel" : "Personal project" },
+    { id: "gamejam", label: "GameJam" },
   ];
   const activeTypeFilters = new Set(typeFilters.map((filter) => filter.id));
 
@@ -125,7 +130,16 @@
   filterIcon.className = "project-filter-icon";
   filterIcon.setAttribute("aria-hidden", "true");
   filterIcon.innerHTML = '<svg viewBox="0 0 24 24" role="img"><path d="M3 5h18l-7 8v5l-4 2v-7L3 5z"/></svg>';
+  const frameworkRow = document.createElement("div");
+  frameworkRow.className = "project-filter-row";
+  const typeRow = document.createElement("div");
+  typeRow.className = "project-filter-row";
+  const filterGroups = document.createElement("div");
+  filterGroups.className = "project-filter-groups";
+  filterGroups.appendChild(frameworkRow);
+  filterGroups.appendChild(typeRow);
   filterBar.appendChild(filterIcon);
+  filterBar.appendChild(filterGroups);
 
   const updateCards = () => {
     cards.forEach((card) => {
@@ -169,13 +183,13 @@
       updateCards();
     });
 
-    filterBar.appendChild(button);
+    frameworkRow.appendChild(button);
   });
 
   typeFilters.forEach((filter) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.className = "project-filter-chip is-active";
+    button.className = "project-filter-chip project-filter-chip-type is-active";
     button.dataset.filter = filter.id;
     button.textContent = filter.label;
     button.setAttribute("aria-pressed", "true");
@@ -198,7 +212,7 @@
       updateCards();
     });
 
-    filterBar.appendChild(button);
+    typeRow.appendChild(button);
   });
 
   tabs.parentNode.insertBefore(filterBar, tabs);

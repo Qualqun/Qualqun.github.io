@@ -16,37 +16,55 @@
 
 .project-filter-bar {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin: 0 auto 28px;
+}
+
+.project-filter-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.project-filter-row {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
   width: 100%;
-  margin: 0 auto 28px;
 }
 
 .project-filter-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 76px;
-  height: 76px;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
   color: #e94e50;
   filter: drop-shadow(0 0 10px rgba(233, 78, 80, 0.35));
 }
 
 .project-filter-icon svg {
-  width: 58px;
-  height: 58px;
+  width: 50px;
+  height: 50px;
   fill: currentColor;
 }
 
 .project-filter-chip {
+  --filter-color: #e94e50;
+  --filter-glow: rgba(233, 78, 80, 0.35);
+  --filter-active-glow: rgba(233, 78, 80, 0.45);
   min-width: 0;
-  border: 1px solid #e94e50;
+  border: 1px solid var(--filter-color);
   border-radius: 999px;
   padding: 9px 18px;
   background: transparent;
-  color: #e94e50;
+  color: var(--filter-color);
   font-family: Droid Sans, Arial, sans-serif;
   font-size: 15px;
   font-weight: 700;
@@ -55,16 +73,22 @@
   transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
+.project-filter-chip-type {
+  --filter-color: #b0a0e8;
+  --filter-glow: rgba(176, 160, 232, 0.35);
+  --filter-active-glow: rgba(176, 160, 232, 0.45);
+}
+
 .project-filter-chip.is-active {
-  background: #e94e50;
+  background: var(--filter-color);
   color: #202238;
-  box-shadow: 0 0 18px rgba(233, 78, 80, 0.45);
+  box-shadow: 0 0 18px var(--filter-active-glow);
 }
 
 .project-filter-chip:hover,
 .project-filter-chip:focus-visible {
   transform: translateY(-1px);
-  box-shadow: 0 0 18px rgba(233, 78, 80, 0.35);
+  box-shadow: 0 0 18px var(--filter-glow);
   outline: none;
 }
 
